@@ -1,8 +1,9 @@
-import { SET_DATA } from '../actions/action';
+import { SET_DATA, SET_CITY } from '../actions/action';
 import update from 'immutability-helper';
 
 const initialState = {
-  weatherData: null
+  weatherData: null,
+  cityForecast: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,7 +14,12 @@ const reducer = (state = initialState, action) => {
                 $set: action.payload
               }
             });
-
+        case SET_CITY:
+            return update(state, {
+              cityForecast: {
+                $set: action.payload
+              }
+            });
         default:
           return state;
     }

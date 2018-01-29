@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("Weather Data: ",this.props.weatherData);
     if (this.props.weatherData) {
       console.log(this.props.weatherData.list);
     }
@@ -45,10 +44,12 @@ class App extends Component {
     return (
       <div className="App">
 
-      {buttonDisplay}
+      <div className='city-nav'>
+        {buttonDisplay}
+      </div>
 
       <WeatherDisplay key={activePlace}
-          zip={PLACES[activePlace].zip} />
+          place={PLACES[activePlace]} />
 
       </div>
     );

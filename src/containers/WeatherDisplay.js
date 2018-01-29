@@ -1,40 +1,37 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { getWeatherData } from '../actions/action';
+import { connect } from 'react-redux';
+import { getForecastByCityID } from '../actions/action';
 
 class WeatherDisplay extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     weatherData: null
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+  }
 
-  // componentDidMount() {
-  //   this.props.getWeatherData()
-  // }
+  componentDidMount() {
+    // this.props.getForecastByCityID(this.props.place.id)
+  }
 
   render() {
-    // console.log(this.props.weatherData);
+    console.log("PRAWPS----> ", this.props);
+
     return(
       <div className='WeatherDisplay'>
-        <h3>Weather Display for {this.props.zip}</h3>
+        <h3>Weather Display for {this.props.place.name}</h3>
       </div>
     )
   }
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     weatherData: state.weatherData
-//   }
-// }
-//
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         getWeatherData: () => dispatch(getWeatherData())
-//     }
-// }
+const mapStateToProps = (state) => {
+  return {
+    cityForecast: state.cityForecast
+  }
+}
 
-// export default connect(mapStateToProps,  mapDispatchToProps)(WeatherDisplay);
-export default WeatherDisplay;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getForecastByCityID: (payload) => dispatch(getForecastByCityID(payload))
+    }
+}
+
+export default connect(mapStateToProps,  mapDispatchToProps)(WeatherDisplay);
