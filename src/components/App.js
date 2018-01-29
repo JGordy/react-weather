@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../styles/App.css';
+import PLACES from '../constants/places';
+import WeatherDisplay from '../containers/WeatherDisplay';
+
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      activePlace: 0
+    }
+  }
+
+
   render() {
+    const activePlace = this.state.activePlace;
+
+    let buttonDisplay = PLACES.map((place, index) => {
+      return <button key={index}
+               onClick={() => {
+                 this.setState({ activePlace: index });
+               }}>
+               {place.name}
+             </button>
+    });
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+      {buttonDisplay}
+
+      <WeatherDisplay key={activePlace}
+          zip={PLACES[activePlace].zip} />
+
       </div>
     );
   }
