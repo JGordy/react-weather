@@ -9,9 +9,9 @@ export function setData(payload) {
 
 
 // calling the api for the weather data
-export const getWeatherData = () => {
+export const getWeatherData = (payload) => {
   return(dispatch, getState) => {
-    fetch('http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric&APPID=23aa34fce77d5b7782d01b0917e6d2b6')
+    fetch(`http://api.openweathermap.org/data/2.5/group?id=${payload}&units=metric&APPID=23aa34fce77d5b7782d01b0917e6d2b6`)
     .then(response => {
       return response.json()
     })

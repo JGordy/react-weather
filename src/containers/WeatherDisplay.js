@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getWeatherData } from '../actions/action';
+// import { connect } from 'react-redux';
+// import { getWeatherData } from '../actions/action';
 
 class WeatherDisplay extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      weatherData: []
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     weatherData: null
+  //   }
+  // }
 
-  componentDidMount() {
-    this.props.getWeatherData()
-  }
+  // componentDidMount() {
+  //   this.props.getWeatherData()
+  // }
 
   render() {
-    console.log(this.props.weatherData);
+    // console.log(this.props.weatherData);
     return(
       <div className='WeatherDisplay'>
         <h3>Weather Display for {this.props.zip}</h3>
@@ -24,16 +24,17 @@ class WeatherDisplay extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    weatherData: state.weatherData
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     weatherData: state.weatherData
+//   }
+// }
+//
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         getWeatherData: () => dispatch(getWeatherData())
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getWeatherData: () => dispatch(getWeatherData())
-    }
-}
-
-export default connect(mapStateToProps,  mapDispatchToProps)(WeatherDisplay);
+// export default connect(mapStateToProps,  mapDispatchToProps)(WeatherDisplay);
+export default WeatherDisplay;

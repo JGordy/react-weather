@@ -2,7 +2,7 @@ import { SET_DATA } from '../actions/action';
 import update from 'immutability-helper';
 
 const initialState = {
-  weatherData: []
+  weatherData: null
 }
 
 const reducer = (state = initialState, action) => {

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import PLACES from '../constants/places';
 import WeatherDisplay from '../containers/WeatherDisplay';
+import { connect } from 'react-redux';
+import { getWeatherData } from '../actions/action';
 
 
 class App extends Component {
@@ -12,8 +14,23 @@ class App extends Component {
     }
   }
 
+  getCityIds = (cities) => {
+    let cityIdList = [];
+    cities.forEach(index => {
+      cityIdList.push(index.id);
+    });
+    return cityIdList.join(',');
+  }
+
+  componentDidMount() {
+    this.props.getWeatherData(this.getCityIds(PLACES))
+  }
 
   render() {
+    console.log("Weather Data: ",this.props.weatherData);
+    if (this.props.weatherData) {
+      console.log(this.props.weatherData.list);
+    }
     const activePlace = this.state.activePlace;
 
     let buttonDisplay = PLACES.map((place, index) => {
@@ -38,4 +55,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    weatherData: state.weatherData
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getWeatherData: (payload) => dispatch(getWeatherData(payload))
+    }
+}
+
+export default connect(mapStateToProps,  mapDispatchToProps)(App);
