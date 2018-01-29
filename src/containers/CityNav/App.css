@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+  height: 100vh;
+}
+
+.city-nav {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+.city-nav div {
+  background-color: transparent;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  flex-basis: 13%;
+  font-size: 1.2rem;
+  margin: 0.25rem auto;
+  padding: 0.5rem;
+  width: 97%;
+}

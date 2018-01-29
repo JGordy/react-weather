@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getForecastByCityID } from '../actions/action';
+import { getForecastByCityID } from '../../actions/action';
 
 class WeatherDisplay extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   componentDidMount() {
     // this.props.getForecastByCityID(this.props.place.id)

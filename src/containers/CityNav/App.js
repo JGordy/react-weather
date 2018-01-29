@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../styles/App.css';
-import PLACES from '../constants/places';
-import WeatherDisplay from '../containers/WeatherDisplay';
+import './App.css';
+import PLACES from '../../constants/places';
+import WeatherDisplay from '../../containers/WeatherDisplay/WeatherDisplay';
 import { connect } from 'react-redux';
-import { getWeatherData } from '../actions/action';
+import { getWeatherData } from '../../actions/action';
 
 
 class App extends Component {
@@ -23,22 +23,21 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.getWeatherData(this.getCityIds(PLACES))
+    this.props.getWeatherData(this.getCityIds(PLACES));
   }
 
   render() {
-    if (this.props.weatherData) {
-      console.log(this.props.weatherData.list);
-    }
+
     const activePlace = this.state.activePlace;
 
     let buttonDisplay = PLACES.map((place, index) => {
-      return <button key={index}
+      return <div key={index}
                onClick={() => {
                  this.setState({ activePlace: index });
                }}>
-               {place.name}
-             </button>
+               <h3>{place.name}</h3>
+               <h2>{this.props.weatherData ? this.props.weatherData.list[index].main.temp: ''}</h2>
+             </div>
     });
 
     return (
