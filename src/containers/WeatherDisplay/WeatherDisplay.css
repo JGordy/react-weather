@@ -1,10 +1,17 @@
 .WeatherDisplay {
-  min-height: 100vh;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 8px;
   color: white;
+  min-height: 100vh;
+  margin: 0rem auto;
+  width: 97vw;
 }
 
 .daily-weather {
+  background-color: rgba(0,0,0,0.2);
   border: 1px solid lightgray;
+  border-radius: 8px;
+  padding-top: 0.75rem;
 }
 
 .daily-weather div {
@@ -15,8 +22,21 @@
 }
 
 .hours {
-  border: 1px solid lightgray;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: rgba(0,0,0,0.2);
+  /* border: 1px solid lightgray; */
+  display: flex;
+  justify-content: space-around;
+  padding: 0.2rem 0rem;
+  margin-top: 0.5rem;
+}
+
+@media screen and (min-width: 800px) {
+
+  .WeatherDisplay {
+    flex-basis: 55%;
+  }
+
+
+
 }

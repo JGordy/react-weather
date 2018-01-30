@@ -13,24 +13,53 @@
 
 .city-buttons {
   align-items: center;
-  background-color: transparent;
-  border: 1px solid lightgray;
-  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 8px;
   color: white;
   display: flex;
   flex-basis: 14%;
   font-size: 1.2rem;
   justify-content: space-between;
-  margin: 0.25rem auto;
-  width: 97%;
+  margin: 0rem auto;
+  overflow: hidden;
+  width: 96%;
 }
 
 .city-buttons h3 {
   align-self: flex-start;
+  flex-basis: 100%;
   margin-top: 1rem;
   margin-left: 1rem;
+  text-align: left;
 }
 
 .city-buttons h2 {
   margin-right: 1rem;
+  color: rgba(255,255,255,0.4);
+  transform: translate(50%, -37%);
+}
+
+.city-weather {
+  margin-left: auto;
+  transform: translateX(215%);
+}
+
+.weather-icon {
+  font-size: 10rem;
+  transform: translateX(30%);
+  color: rgba(255,255,255,0.2);
+}
+
+@media screen and (min-width: 800px) {
+
+ .App {
+   display: flex;
+   flex-flow: row;
+   justify-content: space-around;
+ }
+
+ .city-nav {
+   flex-basis: 35%;
+ }
+
 }

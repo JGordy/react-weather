@@ -10,6 +10,7 @@ html {
 
 body {
   background: radial-gradient(#29f, #2cf);
+  /* background: radial-gradient(white, lightgray); */
   height: 100vh;
   background-position: center;
   background-size: cover;

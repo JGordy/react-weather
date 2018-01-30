@@ -2,27 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getForecastByCityID } from '../../actions/action';
 import './WeatherDisplay.css';
+import * as Typeicons from 'react-icons/lib/ti';
 
 class WeatherDisplay extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      cityForecast: ''
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     cityForecast: ''
+  //   }
+  // }
 
   componentDidMount() {
-    this.props.getForecastByCityID(this.props.place.id)
-    this.setState({cityForecast: this.props.cityForecast})
+    this.props.getForecastByCityID(this.props.place.id);
+    // this.setState({cityForecast: this.props.cityForecast});
   }
 
   render() {
     console.log("PRAWPS----> ", this.props);
     let dailyWeather = this.props.dailyWeather,
-        cityForecast = this.state.cityForecast,
+        cityForecast = this.props.cityForecast,
         city = this.props.place,
         hourlyWeather;
-
     if (cityForecast) {
       hourlyWeather = cityForecast.list.map((hour, index) => {
         // console.log("HOUR---->",hour);
