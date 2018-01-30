@@ -1,5 +1,5 @@
 .WeatherDisplay {
-  border: 1px solid rgba(0,0,0,0.4);
+  /* border: 1px solid rgba(0,0,0,0.4); */
   border-radius: 8px;
   color: white;
   min-height: 100vh;
@@ -25,6 +25,7 @@
   align-items: center;
   background-color: rgba(0,0,0,0.2);
   /* border: 1px solid lightgray; */
+  border-radius: 8px;
   display: flex;
   justify-content: space-around;
   padding: 0.2rem 0rem;

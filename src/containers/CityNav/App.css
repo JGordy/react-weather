@@ -25,6 +25,11 @@
   width: 96%;
 }
 
+.name-holder h2 {
+  font-size: 1.5rem;
+  width: 150%;
+}
+
 .city-buttons h3 {
   align-self: flex-start;
   flex-basis: 100%;
@@ -34,9 +39,10 @@
 }
 
 .city-buttons h2 {
-  margin-right: 1rem;
   color: rgba(255,255,255,0.4);
-  transform: translate(50%, -37%);
+  font-style: italic;
+  margin-right: 1rem;
+  transform: translate(0%, -23%);
 }
 
 .city-weather {
