@@ -1,3 +1,22 @@
 .WeatherDisplay {
-  height: 100vh;
+  min-height: 100vh;
+  color: white;
+}
+
+.daily-weather {
+  border: 1px solid lightgray;
+}
+
+.daily-weather div {
+  align-items: center;
+  display: flex;
+  height: 5rem;
+  justify-content: space-around;
+}
+
+.hours {
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

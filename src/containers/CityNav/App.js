@@ -27,16 +27,17 @@ class App extends Component {
   }
 
   render() {
-
     const activePlace = this.state.activePlace;
-
+    let weather = this.props.weatherData;
+    // console.log(weather);
     let buttonDisplay = PLACES.map((place, index) => {
-      return <div key={index}
+      return <div className='city-buttons'
+               key={index}
                onClick={() => {
                  this.setState({ activePlace: index });
                }}>
                <h3>{place.name}</h3>
-               <h2>{this.props.weatherData ? this.props.weatherData.list[index].main.temp: ''}</h2>
+               <h2>{this.props.weatherData ? weather.list[index].main.temp.toFixed(0) + '˚': ''}</h2>
              </div>
     });
 
@@ -48,7 +49,8 @@ class App extends Component {
       </div>
 
       <WeatherDisplay key={activePlace}
-          place={PLACES[activePlace]} />
+          place={PLACES[activePlace]}
+          dailyWeather={this.props.weatherData ? weather.list[activePlace] : ''} />
 
       </div>
     );

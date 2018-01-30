@@ -4,6 +4,15 @@
   font-family: sans-serif;
 }
 
+html {
+  width: 100%;
+}
+
 body {
-  background: radial-gradient(#ffffff, lightgray);
+  background: radial-gradient(#29f, #2cf);
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
