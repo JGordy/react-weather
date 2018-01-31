@@ -30,9 +30,9 @@ class App extends Component {
         return <Typeicons.TiWeatherSunny />;
       case 'Snow':
         return <Typeicons.TiWeatherSnow />;
-      case 'Haze':
+      case 'Haze' || 'Fog':
         return <Typeicons.TiWaves />;
-      case 'Rain' || "Drizzle":
+      case 'Rain' || 'Drizzle':
         return <Typeicons.TiWeatherShower />;
       case 'Clouds':
         return <Typeicons.TiWeatherCloudy />;
@@ -89,7 +89,7 @@ class App extends Component {
                </div>
                <div className='city-weather'>
                  <h1>{weather ? weather.list[index].main.temp.toFixed(0) + '˚': ''}</h1>
-                 <h5>{weather ? weather.list[index].main.temp_max.toFixed(0) + "˚ / " +weather.list[index].main.temp_min.toFixed(0) + '˚': ''}</h5>
+                 <h5>{weather ? weather.list[index].main.temp_max.toFixed(0) + "˚/ " +weather.list[index].main.temp_min.toFixed(0) + '˚': ''}</h5>
                </div>
                <div className='weather-icon'>
                 {weatherIcon}
@@ -100,14 +100,15 @@ class App extends Component {
     return (
       <div className="App">
 
-      <h1 className="title">My Weather</h1>
-
       <div className='city-nav'>
+        <h1 className="title">My Weather</h1>
         {buttonDisplay}
       </div>
 
       <WeatherDisplay key={activePlace}
           place={PLACES[activePlace]}
+          handleWeatherIcon={this.props.weatherData ? this.handleWeatherIcon : ''}
+          handleTempColor={this.props.weatherData ? this.handleTempColor : ''}
           dailyWeather={this.props.weatherData ? weather.list[activePlace] : ''} />
 
       </div>

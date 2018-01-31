@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getForecastByCityID } from '../../actions/action';
 import './WeatherDisplay.css';
-// import * as Typeicons from 'react-icons/lib/ti';
 
 class WeatherDisplay extends Component {
   // constructor(props) {
@@ -13,20 +12,6 @@ class WeatherDisplay extends Component {
   // }
 
   filterForecastData = (forecastData) => {
-    // let forecast = {
-    //       firstDate: forecastData[0].dt_txt.split(" ")[0],
-    //       dayOne: [],
-    //       secondDate: [],
-    //       dayTwo: [],
-    //       thirdDate: [],
-    //       dayThree: [],
-    //       fourthDate: [],
-    //       dayFour: [],
-    //       fifthDate: [],
-    //       dayFive: [],
-    //       sixthDate: [],
-    //       daySix: []
-    //     };
 
     let firstDate = forecastData[0].dt_txt.split(" ")[0],
         dayOne = [],
@@ -82,23 +67,22 @@ class WeatherDisplay extends Component {
 
   componentDidMount() {
     this.props.getForecastByCityID(this.props.place.id);
-    // this.setState({cityForecast: this.props.cityForecast});
   }
 
   render() {
     let dailyWeather = this.props.dailyWeather,
         cityForecast = this.props.cityForecast,
         city = this.props.place,
-        hourlyWeather,
         forecast;
 
     if (cityForecast && dailyWeather) {
        forecast = this.filterForecastData(cityForecast.list);
-       // console.log("forecast----> ", forecast);
+       console.log("forecast----> ", forecast);
     }
 
     return(
       <div className='WeatherDisplay'>
+
         <div className="daily-weather">
           <h3>{dailyWeather ? dailyWeather.weather[0].description + " today " : "Forecast "} for {city.name}</h3>
           <div>
@@ -115,15 +99,18 @@ class WeatherDisplay extends Component {
                      </div>
             } else {
               return <div className="forecast-block" key={index}>
-                       {item.map((hour, index) => {
+                       {item ? item.map((hour, index) => {
                          return <div className="hourly-block" key={index}>
-                                  {hour.main.temp.toFixed(0) + "˚"}
+                                  <h3 className="hour">{hour.dt_txt.split(' ')[1].split(':')[0]}</h3>
+                                  <p className="hourly-temp">{hour.main.temp.toFixed(0) + "˚"}</p>
+                                  <div className="hourly-icon">{this.props.handleWeatherIcon(hour.weather[0].main)}</div>
                                  </div>
-                       })}
+                       }) : ''}
                      </div>
             }
           }) : ''}
         </div>
+
       </div>
     )
   }

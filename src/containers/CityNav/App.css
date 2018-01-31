@@ -5,14 +5,14 @@
 }
 
 .title {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,1);
 }
 
 .city-nav {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-  height: 95vh;
+  height: 100vh;
 }
 
 .city-buttons {
@@ -47,13 +47,17 @@
   color: rgba(255,255,255,0.4);
   font-style: italic;
   margin-right: 1rem;
-  transform: translate(3.5rem, -0.3rem);
+  transform: translate(3rem, -0.3rem);
   text-align: left;
 }
 
 .city-weather {
   margin-left: auto;
-  transform: translateX(245%);
+  transform: translateX(210%);
+}
+
+.city-weather h5 {
+  width: 4.5rem;
 }
 
 .weather-icon {
