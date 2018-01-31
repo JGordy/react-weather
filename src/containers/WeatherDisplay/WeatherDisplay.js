@@ -5,40 +5,79 @@ import './WeatherDisplay.css';
 // import * as Typeicons from 'react-icons/lib/ti';
 
 class WeatherDisplay extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      cityForecast: {}
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     cityForecast: {}
+  //   }
+  // }
 
   filterForecastData = (forecastData) => {
-    let firstDate = forecastData[0].dt_txt.split(" "),
-        secondDate = forecastData[8].dt_txt.split(" "),
-        thirdDate = forecastData[16].dt_txt.split(" "),
-        fourthDate = forecastData[24].dt_txt.split(" "),
-        fifthDate = forecastData[32].dt_txt.split(" "),
-        filteredForecast = {
-          dayOne: [],
-          dayTwo: [],
-          dayThree: [],
-          dayFour: [],
-          dayFive: []
-        }
+    // let forecast = {
+    //       firstDate: forecastData[0].dt_txt.split(" ")[0],
+    //       dayOne: [],
+    //       secondDate: [],
+    //       dayTwo: [],
+    //       thirdDate: [],
+    //       dayThree: [],
+    //       fourthDate: [],
+    //       dayFour: [],
+    //       fifthDate: [],
+    //       dayFive: [],
+    //       sixthDate: [],
+    //       daySix: []
+    //     };
+
+    let firstDate = forecastData[0].dt_txt.split(" ")[0],
+        dayOne = [],
+        secondDate,
+        dayTwo = [],
+        thirdDate,
+        dayThree = [],
+        fourthDate,
+        dayFour = [],
+        fifthDate,
+        dayFive = [],
+        sixthDate,
+        daySix = [],
+        forecast = []
+
+
     forecastData.map(hour => {
-      if (hour.dt_txt.includes(firstDate[0])) {
-        filteredForecast.dayOne.push(hour);
-      } else if (hour.dt_txt.includes(secondDate[0])) {
-        filteredForecast.dayTwo.push(hour);
-      } else if (hour.dt_txt.includes(thirdDate[0])) {
-        filteredForecast.dayThree.push(hour);
-      } else if (hour.dt_txt.includes(fourthDate[0])) {
-        filteredForecast.dayFour.push(hour);
-      } else if (hour.dt_txt.includes(fifthDate[0])) {
-        filteredForecast.dayFive.push(hour);
+      if (forecast.length === 0) {
+        forecast.push(firstDate)
+        dayOne.push(hour);
+      } else if (hour.dt_txt.includes(firstDate)) {
+        dayOne.push(hour);
+      } else if (secondDate === undefined) {
+        secondDate = hour.dt_txt.split(" ")[0];
+        dayTwo.push(hour);
+      } else if (hour.dt_txt.includes(secondDate)) {
+        dayTwo.push(hour);
+      } else if (thirdDate === undefined) {
+        thirdDate = hour.dt_txt.split(" ")[0];
+        dayThree.push(hour);
+      } else if (hour.dt_txt.includes(thirdDate)) {
+        dayThree.push(hour);
+      } else if (fourthDate === undefined) {
+        fourthDate = hour.dt_txt.split(" ")[0];
+        dayFour.push(hour);
+      } else if (hour.dt_txt.includes(fourthDate)) {
+        dayFour.push(hour);
+      } else if (fifthDate === undefined) {
+        fifthDate = hour.dt_txt.split(" ")[0];
+        dayFive.push(hour);
+      } else if (hour.dt_txt.includes(fifthDate)) {
+        dayFive.push(hour);
+      } else if (sixthDate === undefined) {
+        sixthDate = hour.dt_txt.split(" ")[0];
+        daySix.push(hour);
+      } else if (hour.dt_txt.includes(sixthDate)) {
+        daySix.push(hour);
       }
     });
-    return filteredForecast;
+    forecast.push(dayOne, secondDate, dayTwo, thirdDate, dayThree, fourthDate, dayFour, fifthDate, dayFive, sixthDate, daySix);
+    return forecast;
   }
 
   componentDidMount() {
@@ -47,24 +86,16 @@ class WeatherDisplay extends Component {
   }
 
   render() {
-    // console.log("PRAWPS----> ", this.props);
     let dailyWeather = this.props.dailyWeather,
         cityForecast = this.props.cityForecast,
         city = this.props.place,
-        hourlyWeather;
+        hourlyWeather,
+        forecast;
+
     if (cityForecast && dailyWeather) {
-       let filteredForecast = this.filterForecastData(cityForecast.list);
-       console.log("filteredForecast----> ", filteredForecast);
-      hourlyWeather = cityForecast.list.map((hour, index) => {
-        // console.log("HOUR---->",hour);
-        return <div className='hours' key={index}>
-                 <h3>{hour.dt_txt}</h3>
-                 <h2>{hour.main.temp.toFixed(0) + "˚"}</h2>
-               </div>
-      })
+       forecast = this.filterForecastData(cityForecast.list);
+       // console.log("forecast----> ", forecast);
     }
-
-
 
     return(
       <div className='WeatherDisplay'>
@@ -76,8 +107,22 @@ class WeatherDisplay extends Component {
           </div>
         </div>
 
-        <div>
-          {cityForecast ? hourlyWeather : ''}
+        <div className="forecast-info">
+          {cityForecast && dailyWeather ? forecast.map((item, index) => {
+            if (typeof item === "string") {
+              return <div className="daily-title" key={index}>
+                      {item}
+                     </div>
+            } else {
+              return <div className="forecast-block" key={index}>
+                       {item.map((hour, index) => {
+                         return <div className="hourly-block" key={index}>
+                                  {hour.main.temp.toFixed(0) + "˚"}
+                                 </div>
+                       })}
+                     </div>
+            }
+          }) : ''}
         </div>
       </div>
     )

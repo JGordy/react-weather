@@ -8,10 +8,12 @@
 }
 
 .daily-weather {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.3);
   border: 1px solid lightgray;
   border-radius: 8px;
   padding-top: 0.75rem;
+  /* position: sticky;
+  top: 0.5rem; */
 }
 
 .daily-weather div {
@@ -30,6 +32,33 @@
   justify-content: space-around;
   padding: 0.2rem 0rem;
   margin-top: 0.5rem;
+}
+
+.forecast-info {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  min-height: 85vh;
+}
+
+.daily-title {
+  margin: 0.2rem 1rem;
+  text-align: left;
+  font-size: 1.4rem;
+}
+
+.forecast-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hourly-block {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.2);
+  flex-basis: 20%;
+  min-height: 4rem;
+  margin: 0.5rem;
 }
 
 @media screen and (min-width: 800px) {

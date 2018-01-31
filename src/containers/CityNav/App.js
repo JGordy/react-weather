@@ -72,7 +72,7 @@ class App extends Component {
         weatherIcon = this.handleWeatherIcon(weather.list[index].weather[0].main);
 
         buttonStyle = {
-              background: `linear-gradient(125deg, rgba(0,0,0,0.2) 65%, ${tempColor} 115%)`
+              background: `linear-gradient(125deg, rgba(0,0,0,0.3) 65%, ${tempColor} 115%)`
             };
 
       }
@@ -89,7 +89,7 @@ class App extends Component {
                </div>
                <div className='city-weather'>
                  <h1>{weather ? weather.list[index].main.temp.toFixed(0) + '˚': ''}</h1>
-                 <h5>{weather ? weather.list[index].main.temp_max.toFixed(0) + "˚/" +weather.list[index].main.temp_min.toFixed(0) + '˚': ''}</h5>
+                 <h5>{weather ? weather.list[index].main.temp_max.toFixed(0) + "˚ / " +weather.list[index].main.temp_min.toFixed(0) + '˚': ''}</h5>
                </div>
                <div className='weather-icon'>
                 {weatherIcon}
@@ -99,6 +99,8 @@ class App extends Component {
 
     return (
       <div className="App">
+
+      <h1 className="title">My Weather</h1>
 
       <div className='city-nav'>
         {buttonDisplay}
