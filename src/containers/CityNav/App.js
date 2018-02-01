@@ -22,6 +22,11 @@ class App extends Component {
     return cityIdList.join(',');
   }
 
+  handleClick = (element, index) => {
+    this.setState({activePlace: index});
+    utils.scrollTo(element);
+  }
+
   componentDidMount() {
     this.props.getWeatherData(this.getCityIds(PLACES));
   }
@@ -39,7 +44,7 @@ class App extends Component {
         weatherIcon = utils.handleWeatherIcon(weather.list[index].weather[0].main);
 
         buttonStyle = {
-              background: `linear-gradient(125deg, rgba(0,0,0,0.3) 65%, ${tempColor} 115%)`
+              background: `linear-gradient(125deg, rgba(0,0,0,0.2) 65%, ${tempColor} 115%)`
             };
 
       }
@@ -48,7 +53,7 @@ class App extends Component {
                style={buttonStyle}
                key={index}
                onClick={() => {
-                 this.setState({ activePlace: index });
+                 this.handleClick("daily-weather" ,index);
                }}>
                <div className='name-holder'>
                  <h3>{place.name}</h3>

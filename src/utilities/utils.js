@@ -48,6 +48,13 @@ const utils = {
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let d = new Date(date);
     return days[d.getDay()]
+  },
+  scrollTo: (element) => {
+    window.scroll({
+      behavior: 'smooth',
+      left: 0,
+      top: document.getElementById(element).offsetTop
+    })
   }
 };
 

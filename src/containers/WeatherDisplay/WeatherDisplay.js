@@ -22,7 +22,6 @@ class WeatherDisplay extends Component {
         daySix = [],
         forecast = []
 
-
     forecastData.map(hour => {
       if (forecast.length === 0) {
         forecast.push(firstDate)
@@ -55,7 +54,9 @@ class WeatherDisplay extends Component {
       } else if (hour.dt_txt.includes(sixthDate)) {
         daySix.push(hour);
       }
+      return forecast;
     });
+
     forecast.push(dayOne, secondDate, dayTwo, thirdDate, dayThree, fourthDate, dayFour, fifthDate, dayFive, sixthDate, daySix);
     return forecast;
   }
@@ -72,14 +73,14 @@ class WeatherDisplay extends Component {
 
     if (cityForecast && dailyWeather) {
        forecast = this.filterForecastData(cityForecast.list);
-       console.log("forecast----> ", forecast);
     }
 
     return(
       <div className='WeatherDisplay'>
 
-        <div className="daily-weather">
-          <h3>{dailyWeather ? dailyWeather.weather[0].description + " today " : "Forecast "} for {city.name}</h3>
+        <div className="daily-weather" id="daily-weather">
+          <div className="city-background">{city.name}</div>
+          <h3>{dailyWeather ? "Currently " + dailyWeather.weather[0].description : ""}</h3>
           <div>
             <h2>High: {dailyWeather ? dailyWeather.main.temp_max.toFixed(0) + "˚" : ''}</h2>
             <h2>Low: {dailyWeather ? dailyWeather.main.temp_min.toFixed(0) + "˚" : ''}</h2>

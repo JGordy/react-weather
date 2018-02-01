@@ -1,8 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  font-family: 'Francois One', sans-serif;
+  /* font-family: sans-serif; */
+
   letter-spacing: 0.1rem;
 }
 
@@ -12,10 +12,11 @@ html {
 
 body {
   background: radial-gradient(#29f, #2cf);
-  /* background: radial-gradient(white, lightgray); */
+  /* background: radial-gradient(white, white); */
   height: 100vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: 'Francois One', sans-serif;
 }

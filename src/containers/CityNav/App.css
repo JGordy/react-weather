@@ -6,6 +6,7 @@
 
 .title {
   color: rgba(255,255,255,1);
+  /* color: rgba(0,0,0,0.4); */
 }
 
 .city-nav {
@@ -19,7 +20,9 @@
   align-items: center;
   border: 1px solid rgba(0,0,0,0.2);
   border-radius: 8px;
+  box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.2);
   color: white;
+  /* color: black; */
   display: flex;
   flex-basis: 14%;
   font-size: 1.2rem;
@@ -27,7 +30,6 @@
   margin: 0rem auto;
   overflow: hidden;
   width: 96%;
-
 }
 
 .name-holder h2 {
@@ -45,6 +47,7 @@
 
 .city-buttons h2 {
   color: rgba(255,255,255,0.4);
+  /* color: rgba(0,0,0,0.4); */
   font-style: italic;
   margin-right: 1rem;
   transform: translate(3rem, -0.3rem);
@@ -62,8 +65,9 @@
 
 .weather-icon {
   font-size: 10rem;
-  transform: translate(0%, -5%);
+  transform: translate(0%, -8%);
   color: rgba(255,255,255,0.2);
+  /* color: rgba(0,0,0,0.2); */
 }
 
 @media screen and (min-width: 800px) {
