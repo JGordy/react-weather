@@ -22,7 +22,7 @@ class WeatherDisplay extends Component {
         dayFive = [],
         sixthDate,
         daySix = [],
-        forecast = []
+        forecast = [];
 
     forecastData.map(hour => {
       if (forecast.length === 0) {
@@ -55,7 +55,7 @@ class WeatherDisplay extends Component {
         daySix.push(hour);
       } else if (hour.dt_txt.includes(sixthDate)) {
         daySix.push(hour);
-      }
+      };
       return forecast;
     });
 
@@ -75,7 +75,7 @@ class WeatherDisplay extends Component {
 
     if (cityForecast && dailyWeather) {
        forecast = this.filterForecastData(cityForecast.list);
-    }
+    };
 
     return(
       <div className='WeatherDisplay'>

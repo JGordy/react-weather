@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './CityNav.css';
 import PLACES from '../../constants/places';
 import WeatherDisplay from '../../containers/WeatherDisplay/WeatherDisplay';
 import { connect } from 'react-redux';
@@ -12,32 +12,22 @@ class App extends Component {
     this.state = {
       activePlace: 0
     }
-  }
-
-  getCityIds = (cities) => {
-    let cityIdList = [];
-    cities.forEach(index => {
-      cityIdList.push(index.id);
-    });
-    return cityIdList.join(',');
-  }
+  };
 
   handleClick = (element, index) => {
     this.setState({activePlace: index});
     utils.scrollTo(element);
-  }
+  };
 
   componentDidMount() {
-    this.props.getWeatherData(this.getCityIds(PLACES));
-  }
+    this.props.getWeatherData(utils.getCityIds(PLACES));
+  };
 
   render() {
     const activePlace = this.state.activePlace;
-    let weather = this.props.weatherData
-    // console.log(weather);
+    let weather = this.props.weatherData;
     let buttonDisplay = PLACES.map((place, index) => {
       let buttonStyle, tempColor, weatherIcon;
-
       if (weather) {
         let temp = weather.list[index].main.temp.toFixed(0);
         tempColor = utils.handleTempColor(temp);
@@ -47,7 +37,7 @@ class App extends Component {
               background: `linear-gradient(125deg, rgba(0,0,0,0.2) 65%, ${tempColor} 115%)`
             };
 
-      }
+      };
 
       return <div className='city-buttons'
                style={buttonStyle}
@@ -84,18 +74,18 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
 const mapStateToProps = (state) => {
   return {
     weatherData: state.weatherData
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getWeatherData: (payload) => dispatch(getWeatherData(payload))
     }
-}
+};
 
 export default connect(mapStateToProps,  mapDispatchToProps)(App);

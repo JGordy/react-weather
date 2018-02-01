@@ -2,6 +2,13 @@ import React from 'react';
 import * as Typeicons from 'react-icons/lib/ti';
 
 const utils = {
+  getCityIds: (cities) => {
+    let cityIdList = [];
+    cities.forEach(index => {
+      cityIdList.push(index.id);
+    });
+    return cityIdList.join(',');
+  },
   handleWeatherIcon: (weather) => {
     switch (weather) {
       case 'Clear':
@@ -47,14 +54,14 @@ const utils = {
   getDay: (date) => {
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let d = new Date(date);
-    return days[d.getDay()]
+    return days[d.getDay()];
   },
   scrollTo: (element) => {
     window.scroll({
       behavior: 'smooth',
       left: 0,
       top: document.getElementById(element).offsetTop
-    })
+    });
   }
 };
 

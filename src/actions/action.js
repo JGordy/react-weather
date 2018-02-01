@@ -7,13 +7,13 @@ export function setData(payload) {
     type: SET_DATA,
     payload: payload
   };
-}
+};
 export function setCity(payload) {
   return {
     type: SET_CITY,
     payload: payload
   };
-}
+};
 
 // calling the api for the group of cities to get weather data
 export const getWeatherData = (payload) => {
@@ -25,8 +25,8 @@ export const getWeatherData = (payload) => {
     .then(data => {
       dispatch(setData(data));
     })
-  }
-}
+  };
+};
 
 // API call to get forecast data for the selected city
 export const getForecastByCityID = (payload) => {
@@ -38,5 +38,5 @@ export const getForecastByCityID = (payload) => {
     .then(data => {
       dispatch(setCity(data))
     })
-  }
-}
+  };
+};

@@ -4,7 +4,7 @@ import update from 'immutability-helper';
 const initialState = {
   weatherData: null,
   cityForecast: null
-}
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -23,6 +23,6 @@ const reducer = (state = initialState, action) => {
         default:
           return state;
     }
-}
+};
 
 export default reducer;
