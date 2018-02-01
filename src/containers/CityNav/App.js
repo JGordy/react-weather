@@ -4,8 +4,7 @@ import PLACES from '../../constants/places';
 import WeatherDisplay from '../../containers/WeatherDisplay/WeatherDisplay';
 import { connect } from 'react-redux';
 import { getWeatherData } from '../../actions/action';
-import * as Typeicons from 'react-icons/lib/ti';
-
+import utils from '../../utilities/utils';
 
 class App extends Component {
   constructor() {
@@ -23,38 +22,6 @@ class App extends Component {
     return cityIdList.join(',');
   }
 
-  handleWeatherIcon = (weather) => {
-    // console.log(weather);
-    switch (weather) {
-      case 'Clear':
-        return <Typeicons.TiWeatherSunny />;
-      case 'Snow':
-        return <Typeicons.TiWeatherSnow />;
-      case 'Haze' || 'Fog':
-        return <Typeicons.TiWaves />;
-      case 'Rain' || 'Drizzle':
-        return <Typeicons.TiWeatherShower />;
-      case 'Clouds':
-        return <Typeicons.TiWeatherCloudy />;
-      default:
-        return <Typeicons.TiWeatherPartlySunny />;
-    }
-  }
-
-  handleTempColor = (temp) => {
-    if (temp > 80) {
-      return 'red';
-    } else if (temp > 65) {
-      return 'gold'
-    } else if (temp > 49) {
-      return 'springgreen';
-    } else if (temp > 32) {
-      return 'midnightblue';
-    } else {
-      return 'orchid';
-    }
-  }
-
   componentDidMount() {
     this.props.getWeatherData(this.getCityIds(PLACES));
   }
@@ -68,8 +35,8 @@ class App extends Component {
 
       if (weather) {
         let temp = weather.list[index].main.temp.toFixed(0);
-        tempColor = this.handleTempColor(temp);
-        weatherIcon = this.handleWeatherIcon(weather.list[index].weather[0].main);
+        tempColor = utils.handleTempColor(temp);
+        weatherIcon = utils.handleWeatherIcon(weather.list[index].weather[0].main);
 
         buttonStyle = {
               background: `linear-gradient(125deg, rgba(0,0,0,0.3) 65%, ${tempColor} 115%)`
@@ -107,8 +74,6 @@ class App extends Component {
 
       <WeatherDisplay key={activePlace}
           place={PLACES[activePlace]}
-          handleWeatherIcon={this.props.weatherData ? this.handleWeatherIcon : ''}
-          handleTempColor={this.props.weatherData ? this.handleTempColor : ''}
           dailyWeather={this.props.weatherData ? weather.list[activePlace] : ''} />
 
       </div>

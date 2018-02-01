@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getForecastByCityID } from '../../actions/action';
 import './WeatherDisplay.css';
+import utils from '../../utilities/utils';
 
 class WeatherDisplay extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     cityForecast: {}
-  //   }
-  // }
 
   filterForecastData = (forecastData) => {
 
@@ -95,15 +90,15 @@ class WeatherDisplay extends Component {
           {cityForecast && dailyWeather ? forecast.map((item, index) => {
             if (typeof item === "string") {
               return <div className="daily-title" key={index}>
-                      {item}
+                      {utils.getDay(item)}
                      </div>
             } else {
               return <div className="forecast-block" key={index}>
                        {item ? item.map((hour, index) => {
                          return <div className="hourly-block" key={index}>
-                                  <h3 className="hour">{hour.dt_txt.split(' ')[1].split(':')[0]}</h3>
+                                  <h3 className="hour">{utils.convertStringToHour(hour.dt_txt)}</h3>
                                   <p className="hourly-temp">{hour.main.temp.toFixed(0) + "˚"}</p>
-                                  <div className="hourly-icon">{this.props.handleWeatherIcon(hour.weather[0].main)}</div>
+                                  <div className="hourly-icon">{utils.handleWeatherIcon(hour.weather[0].main)}</div>
                                  </div>
                        }) : ''}
                      </div>
