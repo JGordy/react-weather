@@ -72,14 +72,14 @@ class App extends Component {
     return (
       <div className="App">
 
-      <div className='city-nav'>
-        <h1 className="title">My Weather</h1>
-        {buttonDisplay}
-      </div>
+        <div className='city-nav'>
+          <h1 className="title">My Weather</h1>
+          {buttonDisplay}
+        </div>
 
-      <WeatherDisplay key={activePlace}
-          place={PLACES[activePlace]}
-          dailyWeather={this.props.weatherData ? weather.list[activePlace] : ''} />
+        <WeatherDisplay key={activePlace}
+            place={PLACES[activePlace]}
+            dailyWeather={this.props.weatherData ? weather.list[activePlace] : ''} />
 
       </div>
     );

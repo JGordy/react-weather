@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// had to import the prop-types package b/c it is deprecated in React v.16+
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getForecastByCityID } from '../../actions/action';
 import './WeatherDisplay.css';
@@ -59,11 +61,11 @@ class WeatherDisplay extends Component {
 
     forecast.push(dayOne, secondDate, dayTwo, thirdDate, dayThree, fourthDate, dayFour, fifthDate, dayFive, sixthDate, daySix);
     return forecast;
-  }
+  };
 
   componentDidMount() {
     this.props.getForecastByCityID(this.props.place.id);
-  }
+  };
 
   render() {
     let dailyWeather = this.props.dailyWeather,
@@ -112,16 +114,37 @@ class WeatherDisplay extends Component {
   }
 };
 
+// had to import the prop-types package b/c it is deprecated in React v.16
+WeatherDisplay.propTypes = {
+  place: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    zip: PropTypes.string
+  }).isRequired,
+  dailWeather: PropTypes.shape({
+    clouds: PropTypes.object,
+    coord: PropTypes.object,
+    dt: PropTypes.number,
+    id: PropTypes.string,
+    main: PropTypes.object,
+    name: PropTypes.string,
+    sys: PropTypes.object,
+    visibility: PropTypes.number,
+    weather: PropTypes.array,
+    wind: PropTypes.object
+  })
+};
+
 const mapStateToProps = (state) => {
   return {
     cityForecast: state.cityForecast
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getForecastByCityID: (payload) => dispatch(getForecastByCityID(payload))
     }
-}
+};
 
 export default connect(mapStateToProps,  mapDispatchToProps)(WeatherDisplay);

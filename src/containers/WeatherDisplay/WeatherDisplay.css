@@ -10,13 +10,8 @@
 }
 
 .daily-weather {
-  /* background-color: rgba(0,0,0,0.3); */
-  /* border: 1px solid lightgray; */
-  border-radius: 8px;
   padding-top: 0.75rem;
-  margin-top: 1rem;
-  /* position: sticky;
-  top: 0.5rem; */
+  margin-top: 0rem;
 }
 
 .city-background {
