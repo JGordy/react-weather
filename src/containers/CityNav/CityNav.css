@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  min-height: 100vh;
+  min-height: 120vh;
   width: 100vw;
 }
 
@@ -22,7 +22,7 @@
   box-shadow: 4px 4px 8px 1px rgba(0,0,0,0.2);
   color: white;
   display: flex;
-  flex-basis: 14%;
+  flex-basis: 13%;
   font-size: 1.2rem;
   justify-content: space-between;
   margin: 0rem auto;
