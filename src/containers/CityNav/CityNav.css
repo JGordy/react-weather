@@ -53,7 +53,7 @@
 
 .city-weather {
   margin-left: auto;
-  transform: translateX(210%);
+  transform: translateX(175%);
 }
 
 .city-weather h5 {
@@ -61,8 +61,8 @@
 }
 
 .weather-icon {
-  font-size: 10rem;
-  transform: translate(0%, -8%);
+  font-size: 8.0rem;
+  transform: translate(-15%, -8%);
   color: rgba(255,255,255,0.2);
 }
 
