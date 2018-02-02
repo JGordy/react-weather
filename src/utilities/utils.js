@@ -17,7 +17,7 @@ const utils = {
         return <Typeicons.TiWeatherSnow />;
       case 'Haze' || 'Fog':
         return <Typeicons.TiWaves />;
-      case 'Rain' || 'Drizzle':
+      case 'Rain' || 'Drizzle' || 'Mist':
         return <Typeicons.TiWeatherShower />;
       case 'Clouds':
         return <Typeicons.TiWeatherCloudy />;

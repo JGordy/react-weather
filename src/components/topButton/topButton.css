@@ -1,0 +1,16 @@
+.TopButton {
+  color: white;
+  font-size: 3rem;
+  position: fixed;
+  right: -35px;
+  bottom: 0px;
+  transition: right 0.4s;
+}
+
+.TopButton.shown {
+  text-align: right;
+  position: fixed;
+  right: 10px;
+  bottom: 0px;
+  transition: right 0.4s;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './CityNav.css';
 import PLACES from '../../constants/places';
 import WeatherDisplay from '../../containers/WeatherDisplay/WeatherDisplay';
+import TopButton from '../../components/topButton/topButton';
 import { connect } from 'react-redux';
 import { getWeatherData } from '../../actions/action';
 import utils from '../../utilities/utils';
@@ -62,7 +63,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <div className='city-nav'>
+        <div className='city-nav' id='Top'>
           <h1 className="title">My Weather</h1>
           {buttonDisplay}
         </div>
@@ -70,6 +71,8 @@ class App extends Component {
         <WeatherDisplay key={activePlace}
             place={PLACES[activePlace]}
             dailyWeather={this.props.weatherData ? weather.list[activePlace] : ''} />
+
+        <TopButton />
 
       </div>
     );

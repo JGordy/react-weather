@@ -83,8 +83,12 @@
 
   .WeatherDisplay {
     flex-basis: 55%;
+    max-height: 80vh;
   }
 
-
+  .forecast-info {
+    height: 80vh;
+    overflow: scroll
+  }
 
 }
