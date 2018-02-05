@@ -9,57 +9,35 @@ import utils from '../../utilities/utils';
 class WeatherDisplay extends Component {
 
   filterForecastData = (forecastData) => {
+    let date = forecastData[0].dt_txt.split(' ')[0];
+    
+    let forecast = forecastData.map((hour, index) => {
+      let dailyTitle =
+          <div className="daily-title" key={hour.dt_txt.split(' ')[0]}>
+            {utils.getDay(hour.dt_txt.split(' ')[0])}
+          </div>;
 
-    let firstDate = forecastData[0].dt_txt.split(" ")[0],
-        dayOne = [],
-        secondDate,
-        dayTwo = [],
-        thirdDate,
-        dayThree = [],
-        fourthDate,
-        dayFour = [],
-        fifthDate,
-        dayFive = [],
-        sixthDate,
-        daySix = [],
-        forecast = [];
+      let hourlyWeatherJSX =
+          <div className='hourly-block' key={index}>
+            <h3 className="hour">
+              {utils.convertStringToHour(hour.dt_txt)}
+            </h3>
+            <p className="hourly-temp">{hour.main.temp.toFixed(0) + "˚"}</p>
+            <div className="hourly-icon">
+              {utils.handleWeatherIcon(hour.weather[0].main)}
+            </div>
+          </div>;
 
-    forecastData.map(hour => {
-      if (forecast.length === 0) {
-        forecast.push(firstDate)
-        dayOne.push(hour);
-      } else if (hour.dt_txt.includes(firstDate)) {
-        dayOne.push(hour);
-      } else if (secondDate === undefined) {
-        secondDate = hour.dt_txt.split(" ")[0];
-        dayTwo.push(hour);
-      } else if (hour.dt_txt.includes(secondDate)) {
-        dayTwo.push(hour);
-      } else if (thirdDate === undefined) {
-        thirdDate = hour.dt_txt.split(" ")[0];
-        dayThree.push(hour);
-      } else if (hour.dt_txt.includes(thirdDate)) {
-        dayThree.push(hour);
-      } else if (fourthDate === undefined) {
-        fourthDate = hour.dt_txt.split(" ")[0];
-        dayFour.push(hour);
-      } else if (hour.dt_txt.includes(fourthDate)) {
-        dayFour.push(hour);
-      } else if (fifthDate === undefined) {
-        fifthDate = hour.dt_txt.split(" ")[0];
-        dayFive.push(hour);
-      } else if (hour.dt_txt.includes(fifthDate)) {
-        dayFive.push(hour);
-      } else if (sixthDate === undefined) {
-        sixthDate = hour.dt_txt.split(" ")[0];
-        daySix.push(hour);
-      } else if (hour.dt_txt.includes(sixthDate)) {
-        daySix.push(hour);
-      };
-      return forecast;
+      if (index === 0) {
+        return [dailyTitle, hourlyWeatherJSX];
+      } else if (hour.dt_txt.includes(date)) {
+        return hourlyWeatherJSX;
+      } else {
+        date = hour.dt_txt.split(' ')[0];
+        return [dailyTitle, hourlyWeatherJSX];
+      }
+
     });
-
-    forecast.push(dayOne, secondDate, dayTwo, thirdDate, dayThree, fourthDate, dayFour, fifthDate, dayFive, sixthDate, daySix);
     return forecast;
   };
 
@@ -90,22 +68,8 @@ class WeatherDisplay extends Component {
         </div>
 
         <div className="forecast-info">
-          {cityForecast && dailyWeather ? forecast.map((item, index) => {
-            if (typeof item === "string") {
-              return <div className="daily-title" key={index}>
-                      {utils.getDay(item)}
-                     </div>
-            } else {
-              return <div className="forecast-block" key={index}>
-                       {item ? item.map((hour, index) => {
-                         return <div className="hourly-block" key={index}>
-                                  <h3 className="hour">{utils.convertStringToHour(hour.dt_txt)}</h3>
-                                  <p className="hourly-temp">{hour.main.temp.toFixed(0) + "˚"}</p>
-                                  <div className="hourly-icon">{utils.handleWeatherIcon(hour.weather[0].main)}</div>
-                                 </div>
-                       }) : ''}
-                     </div>
-            }
+          {forecast ? forecast.map(item => {
+             return item;
           }) : ''}
         </div>
 
@@ -147,4 +111,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps,  mapDispatchToProps)(WeatherDisplay);
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherDisplay);
