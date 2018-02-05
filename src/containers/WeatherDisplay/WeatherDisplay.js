@@ -64,7 +64,7 @@ class WeatherDisplay extends Component {
   };
 
   componentDidMount() {
-    this.props.getForecastByCityID(this.props.place.id);
+    this.props.getForecastByCityID("forecast?id=" + this.props.place.id);
   };
 
   render() {

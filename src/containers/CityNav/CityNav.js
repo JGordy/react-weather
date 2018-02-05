@@ -21,7 +21,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.props.getWeatherData(utils.getCityIds(PLACES));
+    this.props.getWeatherData("group?id=" + utils.getCityIds(PLACES));
   };
 
   render() {

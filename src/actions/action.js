@@ -19,7 +19,7 @@ export function setCity(payload) {
 // calling the api for the group of cities to get weather data
 export const getWeatherData = (payload) => {
   return(dispatch, getState) => {
-    return services.fetchGroupWeather(payload)
+    return services.fetchWeatherData(payload)
            .then(data => {
              dispatch(setData(data))
            })
@@ -29,7 +29,7 @@ export const getWeatherData = (payload) => {
 // API call to get forecast data for the selected city
 export const getForecastByCityID = (payload) => {
   return(dispatch, getState) => {
-    return services.fetchCityForecast(payload)
+    return services.fetchWeatherData(payload)
            .then(data => {
              dispatch(setCity(data))
            })
