@@ -3,18 +3,16 @@ export const SET_DATA = "SET_DATA";
 export const SET_CITY = "SET_CITY";
 
 // setting the initial state to the data returned from the API call
-export function setData(payload) {
-  return {
-    type: SET_DATA,
-    payload: payload
-  };
+const makeActionCreator = function (actionType) {
+  return function (payload) {
+    return {
+      type: actionType,
+      payload: payload
+    }
+  }
 };
-export function setCity(payload) {
-  return {
-    type: SET_CITY,
-    payload: payload
-  };
-};
+export const setData = makeActionCreator(SET_DATA);
+export const setCity = makeActionCreator(SET_CITY);
 
 // calling the api for the group of cities to get weather data
 export const getWeatherData = (payload) => {
