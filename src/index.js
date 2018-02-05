@@ -9,10 +9,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducer/reducer';
 
+
+// const createStoreWithMiddleWare = applyMiddleware()(createStore);
+
 const store = createStore(
     reducers,
     compose(
-        applyMiddleware(reduxThunk)
+        applyMiddleware(reduxThunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 );
 
